@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Nseatads. All rights reserved.
 //
 
+import Parse
 import UIKit
 import CoreData
 
@@ -16,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        Parse.setApplicationId("0qbfsY021Kumaasv3ToxgyWgIcrE0029rgoPcBVR",
+            clientKey: "k9WtgQWYlUmzzecIXUSQXqvhJ3Mxugih4jqCIKFU")
+        
+        let photo = PFObject(className: "photo")
+        photo["image"] = "great"
+        photo.saveInBackgroundWithBlock{(success: Bool, error:NSError?) -> Void in
+            println("object has been saved")
+        }
+        
         // Override point for customization after application launch.
         return true
     }
